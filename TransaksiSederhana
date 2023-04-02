@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class Tugas1 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int pilihan, jumlah, harga, total = 0;
+        boolean beliLagi = true;
+        
+        do {
+            System.out.println(" ");
+            System.out.format("+---------------+ IPIN ELECTRONIC +---------------+%n");
+            System.out.format("+-------+---------------------+-------------------+%n");
+            System.out.format("| ID    | Barang              | Harga             |%n");
+            System.out.format("+-------+---------------------+-------------------+%n"); 
+            System.out.format("| 1     | FlashDisk 32GB      | 60.000            |%n");
+            System.out.format("+-------+---------------------+-------------------+%n");
+            System.out.format("| 2     | FlashDisk 64GB      | 100.000           |%n");
+            System.out.format("+-------+---------------------+-------------------+%n");
+            System.out.println(" ");
+            System.out.print("Masukkan Barang        : ");
+            pilihan = input.nextInt();
+            
+            switch (pilihan) {
+                case 1:
+                    harga = 60000;
+                    break;
+                case 2:
+                    harga = 100000;
+                    break;
+                default:
+                    System.out.println("Pilihan barang tidak tersedia");
+                    continue;
+            }
+            
+            System.out.print("Masukkan jumlah barang : ");
+            jumlah = input.nextInt();
+            
+            if (jumlah <= 0) {
+                System.out.println("Jumlah barang harus lebih dari 0");
+                continue;
+            }
+            
+            total += harga * jumlah;
+            
+            System.out.println(" ");
+            System.out.println("Harga Barang           : Rp." + harga);
+            System.out.println("Jumlah Barang          : " + jumlah);
+            System.out.println("Total Harga            : Rp." + total);
+            System.out.println(" ");
+            
+            System.out.print("Apakah Anda ingin melanjutkan transaksi? (y/n): ");
+            String jawaban = input.next();
+            
+            if (jawaban.equalsIgnoreCase("n")) {
+                beliLagi = false;
+            }
+            } while (beliLagi);
+        
+            System.out.println(" ");
+            System.out.println("+-------------+ P E M B A Y A R A N +-------------+");
+            System.out.println("+-------------------------------------------------+");
+            System.out.println("Total harga : Rp." + total);
+        
+            int uang = 0;
+            boolean bayarLagi = true;
+        
+            while (bayarLagi && uang < total) {
+                System.out.print("Jumlah Uang : Rp.");
+                uang += input.nextInt();
+            
+            if (uang >= total) {
+                int kembalian = uang - total;
+                System.out.println("Kembalian   : Rp." + kembalian);
+                System.out.println("+-------------------------------------------------+");
+                System.out.println("");
+                System.out.println("+----------+ TERIMAKASIH SUDAH DATANG +-----------+");
+                System.out.println("+------------+ SEMOGA ANDA SENANG <3 +------------+");
+                System.out.println("");
+                bayarLagi = false;
+            } else {
+                System.out.println(" ");
+                System.out.println("Maaf Uang Anda Kurang, Silahkan Lakukan Pembayaran Ulang");
+                System.out.println(" ");
+            }
+        }
+    }
+}
